@@ -1,6 +1,6 @@
-# DockingPie: a Docking Plugin for PyMOL
+# Tutorial: Docking of glycosaminoglcyan (GAG) substrate to 3-O-sulfotransferase (3-OST-1)
 
-## Requirements
+### Requirements
 **Minimal requirement**: a recent version of PyMOL installed on your computer. 
 
 DockingPie is compatible with incentive PyMOL builds distributed by [Schrodinger](https://pymol.org/2/ "Schrodinger website") (required PyMOL version >= 2.3.4) and open source builds (required PyMOL version >= 2.3.0).
@@ -9,13 +9,17 @@ DockingPie is distributed freely to the public and it has been tested and runs o
 
 (Some incompatibilities may arise with the usage of PyMOL version 2.5.x if ‘undo’ function is enabled, which in PyMOL 2.5.2 still shows some shortcomings. Therefore, when the plugin is opened, the ‘undo’ function is automatically disabled and it is strongly suggested to keep it disabled when using the plugin.)
 
-## Download
+### Download
 PyMOL Software download links: [Windows](https://pymol.org/installers/PyMOL-2.5.4-Windows-x86_64.exe)  |  [Mac OS](https://pymol.org/installers/PyMOL-2.5.4_420-MacOS-py37.dmg)  | [Linux](https://pymol.org/installers/PyMOL-2.5.4_404-Linux-x86_64-py37.tar.bz2)
 
-DockingPie plugin ZIP file: [download from here](https://github.com/paiardin/DockingPie/archive/refs/heads/main.zip "DockingPie plugin ZIP file direct download") 
+DockingPie plugin ZIP file: [Download](https://github.com/paiardin/DockingPie/archive/refs/heads/main.zip "DockingPie plugin ZIP file direct download") 
+
+Download AutoDock Vina: [Windows](https://vina.scripps.edu/wp-content/uploads/sites/55/2020/12/autodock_vina_1_1_2_win32.msi)  | [Linux](https://vina.scripps.edu/wp-content/uploads/sites/55/2020/12/autodock_vina_1_1_2_linux_x86.tgz)  | [macOS](https://vina.scripps.edu/wp-content/uploads/sites/55/2020/12/autodock_vina_1_1_2_mac_64bit.tar.gz)
+
+Download AutoDock Vina: [Windows](https://ericboittier.pythonanywhere.com/static/GlycoTorchVina.exe) | [Linux](https://ericboittier.pythonanywhere.com/static/GlycoTorchVina)
 
 
-## Installation 
+### Installation 
 
 ![immagine](https://github.com/glycodynamics/DockingPieTutor/blob/main/images/DockingPie_install.png)
 
@@ -28,7 +32,7 @@ DockingPie is installed, as any other PyMOL [1] plugin, via the PyMOL plugin man
 * Click on *Install New Plugin* and press the *Choose File…* button. Select the **DockingPie ZIP file** which you have downloaded before. 
 You will be asked to give the path of the directory in which to install the plugin files. Just select the default option if you are unsure about what to do (the location of the plugin files does not make any difference when running the plugin).
 
-## Configuration 
+### Configuration 
 
 DockingPie, at the current and first release, integrates four different docking programs: RxDock [2], Vina [3], Smina [4] and ADFR [5]; several chemo-informatics python modules (i.e. AutoDockTools [6], Openbabel [7], sPyRMSD [8]) and other external tools like sdsorter [9]. The CONFIGURATION tab provides an easy way for the installation of the needed tools from within the plugin in two steps, as reported next.
 
@@ -41,7 +45,7 @@ DockingPie, at the current and first release, integrates four different docking 
 
 
 
-### Installation
+# Docking Tutorial
 
 
 ### Citations: 
