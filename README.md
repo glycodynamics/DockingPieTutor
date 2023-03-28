@@ -43,9 +43,7 @@ DockingPie, at the current and first release, integrates four different docking 
 * Install external tools: If the needed tools are not currently installed on the user’s machine, the *Install* button is enabled and it can be used to install the external components.
 
 
-
-
-# Hands-On Tutorial
+# 1. AutoDock Vina: Hands-On Tutorial
 
 ### 1. Preparing System for Docking: 
 **Download Structure:** Open PyMOL and download PDB ID 3UAN (File → Get PDB → Write '3UAN' → Click Download)\
@@ -64,32 +62,79 @@ To dock the GAG into the protein, first save protein and GAG separately into two
 
 ### 2. Preparing Receptor and Ligand Input Files
 
-- **Receptor Input File:** PyMOL → Plugin → DockingPie 1.2 → Open Panel Vina → Receptors → Import from PyMOL → Select receptor → Import → Check Add hydrogens, Remove Non-standard residues, Remove Water (if you did not delete them before!) →  Generate Receptor → Select Receptor → Set
+- **Receptor Input File:** PyMOL → Plugin → DockingPie 1.2 → Open Panel Vina → Sub-panel Receptors → Import from PyMOL → Select receptor → Import → Check Add hydrogens, Remove Non-standard residues, Remove Water (if you did not delete them before!) →  Generate Receptor → Select Receptor → Set
 
-- **Ligand Input File:** DockingPie 1.2 → Panel Vina → Ligands → Import from PyMOL → Select lig_xray → Import → Check All but Guanidium and Amide, Add hydrogen →  Generate Ligand → Select Ligand → Set
+- **Ligand Input File:** DockingPie 1.2 → Panel Vina → Sub-panel Ligands → Import from PyMOL → Select lig_xray → Import → Check All but Guanidium and Amide, Add hydrogen →  Generate Ligand → Select Ligand → Set
 
 <img width="977" alt="image" src="https://user-images.githubusercontent.com/10772897/228326317-c51c952d-bd8d-4dc6-8373-c9c11cf27361.png">
 
-2. Assigning Search Space for Docking: Grid Setting
+### 3. Assigning Search Space for Docking: Grid Settings
 
-- **Set Grid Box Center:** PyMOL → Plugin → DockingPie 1.2 → Panel Vina → Grid Settings → Import Objects from PyMOL → Selection: lig_xray\
+- **Set Grid Box Center:** PyMOL → Plugin → DockingPie 1.2 → Panel Vina → Sub-panel Grid Settings → Import Objects from PyMOL → Selection: lig_xray\
 Here we choose coordinates GAG in X-Rray structure as center of the docking box. 
 
 - **Set Grid Box Dimensions:**\
-Set the grid dimention to: All=1, x=40, y-40, z=40. These numbers suggest that a box of domension 40Å x 40Å x 40Å centered at the geometric centre of the GAG in X-Rray structure has ben defined as search space for docking. Docking program will try finding optmimized binding pose of the ligand inside the definded search box only. 
+Set the grid dimention to: All=1, x=40, y-40, z=40; and then click "Set in Docking Tab".
+These numbers suggest that a box of domension 40Å x 40Å x 40Å centered at the geometric centre of the GAG in X-Rray structure has ben defined as search space for docking. Docking program will try finding optmimized binding pose of the ligand inside the definded search space only. The search space effectively restricts where the movable atoms, including those in the flexible side chains, should lie.
 
 **Note** Plese note down the grid center coordinates and dimensions. We wil use tehse numbers later in teh tutorial to perform docking of GAG using GlycoTyrch Vina which is not supported in DockingPie 1.2 yet.
 
+### 4. Run Docking
+- DockingPie 1.2 → Panel Vina → Sub-panel Docking 
+- Select "AllvsAll" in Docking Tab
+- Select Available caveties: Grid center_1 
+- Select Receptor(s): 01_receptor_vina
+- Select Ligand(s)  : 01_lig_xray_vina
+- Poses = 20 #generate 20 docking poses
+- Exastiveness = 8  # Exhaustiveness of the global search. This increases the time linearly and decrease the probability of not finding the minimum exponentially.
+- Energy Range = 5   #maximum energy difference between the best binding mode and the worst one displayed (kcal/mol)
+- Click "Run Docking" → Start
+<img width="534" alt="image" src="https://user-images.githubusercontent.com/10772897/228357313-1dfa7725-ccc9-46b4-9c3c-a1a83d524074.png">
 
-→ Import → Check Add hydrogens, Remove Non-standard residues, Remove Water (if you did not delete them before!) →  Generate Receptor → Select Receptor → Set
 
-Import Object from PyMOL
-Select lig_xray (Original Position of ligand (COM) as center of the grid)
-Set x,y,z dimension to 40
-Set in Docking Tab
-Note down Grid Center Coordinates 
+### 5. Analyze Docking Results
+- When docking run is 100% complete, a new entry "Vina" is created in PyMIL. Click "+" to expand entries under Vina. Entry Run_1_Vina contains all the docking Poses. 
+- visualize the docking poses in PyMOL and compare the docking poses from the one determined in X-ray structure. 
 
 
+# GlycoTorch Vina: Hands-On Tutorial
+
+### 1. Obtaining Receptor and Ligand Input Files
+- Since, GlycoTorch Vina is verion of AutoDock Vina, optmized  for docking of glycosaminoglcyans to proteins, the input files for both programs wil be same. In this case, we will copy receptor and ligand input files prepared by DockingPie plugin and use them for docking using program GlycoTorch.
+
+- Copy file ```01_receptor_Vina.pdbqt``` and ```01_lig-xray_Vina.pdbqt``` from the DockingPie working directory. 
+
+- type ```pwd``` in pymol termianl to know the location of these files.
+
+### 2. Docking Configuration File
+One can write all the iplut information in a text file [GTVina.conf]{}. and use it as input to GlycoTorch Vina. For example:
+
+```
+receptor = 01_receptor_Vina.pdbqt 	# name of receptor input file 
+ligand = 01_lig-xray_Vina.pdbqt 	  # name of the ligand input file
+out = Run_1_GTVina.pdbqt			        # name of the docking output file 
+log = Run_1_GTVina_log.txt
+
+center_x=11.46	                    # x, y and z coordinate of the search box 
+center_y=12.49 
+center_z=47.96 
+
+size_x=40                          # Size of the search space box in Angstrom in x, y and z direction 
+size_y=40 
+size_z=40 
+
+num_modes=20 	                   # number of docking solutions
+exhaustiveness=8                 # exhaustiveness of the global search (roughly proportional to time) 
+energy_range=5 	                 # within enery raange 
+cpu=8		                          # number of CPU cores used for docking 
+
+chi_coeff=1                      # Chi coefficient energy (used in vina-carb only)
+chi_cutoff=2                     # Chi cutoff energy (used in vina-carb only)
+```
+
+
+- **Set Grid Box Center:**
+- **Set Grid Box Dimensions:**
 
 
 ### Citations: 
