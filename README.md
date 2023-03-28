@@ -17,7 +17,7 @@ DockingPie plugin ZIP file: [download from here](https://github.com/paiardin/Doc
 
 ## Installation 
 
-![immagine](https://user-images.githubusercontent.com/68196372/158363199-aaaabe39-ce47-4a3e-b794-e57e088c2cce.png)
+![immagine](https://github.com/glycodynamics/DockingPieTutor/blob/main/images/DockingPie_install.png)
 
 DockingPie is installed, as any other PyMOL [1] plugin, via the PyMOL plugin manager:
 
@@ -32,9 +32,12 @@ You will be asked to give the path of the directory in which to install the plug
 
 DockingPie, at the current and first release, integrates four different docking programs: RxDock [2], Vina [3], Smina [4] and ADFR [5]; several chemo-informatics python modules (i.e. AutoDockTools [6], Openbabel [7], sPyRMSD [8]) and other external tools like sdsorter [9]. The CONFIGURATION tab provides an easy way for the installation of the needed tools from within the plugin in two steps, as reported next.
 
+![immagine](https://github.com/glycodynamics/DockingPieTutor/blob/main/images/DockingPie_Configure.png)
+
 * Configure external tools: CONFIGURATION tab → *Configure* → *Start Download* → *Finish Download*
 
 * Install external tools: If the needed tools are not currently installed on the user’s machine, the *Install* button is enabled and it can be used to install the external components.
+
 
 
 
