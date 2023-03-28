@@ -102,16 +102,17 @@ These numbers suggest that a box of domension 40Å x 40Å x 40Å centered at the
 ### 1. Obtaining Receptor and Ligand Input Files
 - Since, GlycoTorch Vina is verion of AutoDock Vina, optmized  for docking of glycosaminoglcyans to proteins, the input files for both programs wil be same. In this case, we will copy receptor and ligand input files prepared by DockingPie plugin and use them for docking using program GlycoTorch.
 
-- Copy file ```01_receptor_Vina.pdbqt``` and ```01_lig-xray_Vina.pdbqt``` from the DockingPie working directory. 
+- Copy file ```01_receptor_Vina.pdbqt``` and ```01_lig-xray_Vina.pdbqt``` from the DockingPie working directory or download them from here: [01_receptor_Vina.pdbqt](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/01_receptor_Vina.pdbqt)  and [01_lig-xray_Vina.pdbqt](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/01_lig-xray_Vina.pdbqt). 
 
 - type ```pwd``` in pymol termianl to know the location of these files.
 
 ### 2. Docking Configuration File
-One can write all the iplut information in a text file [GTVina.conf]{}. and use it as input to GlycoTorch Vina. For example:
+One can write all the iplut information in a text file [GTVina.conf](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/GTVina.conf) and use it as input to GlycoTorch Vina. For example:
 
 ```
 receptor = 01_receptor_Vina.pdbqt 	# name of receptor input file 
 ligand = 01_lig-xray_Vina.pdbqt 	  # name of the ligand input file
+
 out = Run_1_GTVina.pdbqt			        # name of the docking output file 
 log = Run_1_GTVina_log.txt
 
