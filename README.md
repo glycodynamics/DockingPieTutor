@@ -5,9 +5,9 @@
 
 DockingPie is compatible with incentive PyMOL builds distributed by [Schrodinger](https://pymol.org/2/ "Schrodinger website") (required PyMOL version >= 2.3.4) and open source builds (required PyMOL version >= 2.3.0).
 
-DockingPie is distributed freely to the public and it has been tested and runs on Windows, macOS and Linux versions of PyMOL.
+DockingPie is distributed freely to the public, and it has been tested and runs on the Windows, macOS, and Linux versions of PyMOL.
 
-(Some incompatibilities may arise with the usage of PyMOL version 2.5.x if ‘undo’ function is enabled, which in PyMOL 2.5.2 still shows some shortcomings. Therefore, when the plugin is opened, the ‘undo’ function is automatically disabled and it is strongly suggested to keep it disabled when using the plugin.)
+Some incompatibilities may arise with the usage of PyMOL version 2.5.x if the "undo" function is enabled, which in PyMOL 2.5.2 still shows some shortcomings. Therefore, when the plugin is opened, the "undo" function is automatically disabled, and it is strongly suggested to keep it disabled when using the plugin.
 
 ### Download
 PyMOL Software download links: [Windows](https://pymol.org/installers/PyMOL-2.5.4-Windows-x86_64.exe)  |  [Mac OS](https://pymol.org/installers/PyMOL-2.5.4_420-MacOS-py37.dmg)  | [Linux](https://pymol.org/installers/PyMOL-2.5.4_404-Linux-x86_64-py37.tar.bz2)
@@ -101,15 +101,15 @@ These numbers suggest that a box of domension 40Å x 40Å x 40Å centered at the
 # GlycoTorch Vina: Hands-On Tutorial
 
 ### 1. Obtaining Receptor and Ligand Input Files
-- Since, GlycoTorch Vina is verion of AutoDock Vina, optmized  for docking of glycosaminoglcyans to proteins, the input files for both programs wil be same. In this case, we will copy receptor and ligand input files prepared by DockingPie plugin and use them for docking using program GlycoTorch.
+- Since, GlycoTorch Vina is version of AutoDock Vina, optimized for docking of glycosaminoglycans to proteins, the input files for both programs will be same. In this case, we will copy receptor and ligand input files prepared by DockingPie plugin and use them for docking using program GlycoTorch.
 
 - Copy file ```01_receptor_Vina.pdbqt``` and ```01_lig-xray_Vina.pdbqt``` from the DockingPie working directory or download them from here: [01_receptor_Vina.pdbqt](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/01_receptor_Vina.pdbqt)  and [01_lig-xray_Vina.pdbqt](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/01_lig-xray_Vina.pdbqt). 
 
-- type ```pwd``` in pymol termianl to know the location of these files.
+- type ```pwd``` in PyMOL terminal to know the location of these files.
 - **Typically the path is:** C:\ProgramData\pymol\lib\site-packages\pmg_tk\startup\DockingPie1\lib\docking_program_main\tmp\Vina_tmp\
 
 ### 2. Docking Configuration File
-One can write all the iplut information in a text file [GTVina.conf](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/GTVina.conf) and use it as input to GlycoTorch Vina. For example:
+One can write all the input information in a text file [GTVina.conf](https://github.com/glycodynamics/DockingPieTutor/blob/main/tutorial/GTVina.conf) and use it as input to GlycoTorch Vina. For example:
 
 ```
 receptor = 01_receptor_Vina.pdbqt 	# name of receptor input file 
@@ -128,7 +128,7 @@ size_z=40
 
 num_modes=20 	                   # number of docking solutions
 exhaustiveness=8                 # exhaustiveness of the global search (roughly proportional to time) 
-energy_range=5 	                 # within enery raange 
+energy_range=5 	                 # within energy range 
 cpu=8		                          # number of CPU cores used for docking 
 
 chi_coeff=1                      # Chi coefficient energy (used in vina-carb only)
@@ -142,15 +142,15 @@ chi_cutoff=2                     # Chi cutoff energy (used in vina-carb only)
 
 ### 4. Compare Docking results from Vina and GlycoTorch Vina
 
-Open GlycoTorch Vina output files ```Run_1_GTVina.pdbqt``` in PyMOL and visualize the docking poses from Vina, and GlycoTorch. The highest raning pose (M1) from GlycoTorch is very close to crystal structure binding mode of GAG, whereas only the 5th ranked docking poses from Vina is close to crystal structure binding mode. This 
+Open GlycoTorch Vina output files ```Run_1_GTVina.pdbqt``` in PyMOL and visualize the docking poses from Vina, and GlycoTorch. The highest raning pose (M1) from GlycoTorch is very close to crystal structure binding mode of GAG, whereas only the 5th ranked docking pose from Vina is close to crystal structure binding mode. This 
 
 
 <img width="950" alt="image" src="https://user-images.githubusercontent.com/10772897/228370979-7f82046c-ed39-4831-9af4-afd2c895ba9a.png">
 
 
-The sggests that GlycoTorch performed better than Vina in terms of generating docking poses that are close to the crystal structure binding mode of GAG. Specifically, the highest ranked pose generated by GlycoTorch (labeled as "M1") was very close to the crystal structure binding mode, while only the 5th ranked pose generated by Vina was close to the crystal structure binding mode.
+The results suggest that GlycoTorch performed better than Vina in terms of generating docking poses that are close to the crystal structure binding mode of GAG. Specifically, the highest ranked pose generated by GlycoTorch (labeled as "M1") was very close to the crystal structure binding mode, while only the 5th ranked pose generated by Vina was close to the crystal structure binding mode.
 
-It is evident that GlycoTorch Vina may be a more accurate or effective docking program for predicting the binding mode of glycosaminoglycans (GAGs) than Vina. However, it is important to note that the performance of different docking programs can vary depending on various factors. Therefore, it may be necessary to analyze top few docking poses and using other methods, like molecular dynamics, to further validate the results and confirm the accuracy of the docking predictions.
+It is evident that GlycoTorch Vina may be a more accurate or effective docking program for predicting the binding mode of glycosaminoglycans (GAGs) than Vina. However, it is important to note that the performance of different docking programs can vary depending on various factors. Therefore, it may be necessary to analyze the top few docking poses and use other methods, like molecular dynamics, to further validate the results and confirm the accuracy of the docking predictions.
 
 ### Citations: 
 
