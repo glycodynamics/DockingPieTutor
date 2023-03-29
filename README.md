@@ -151,7 +151,6 @@ The results suggest that GlycoTorch performed better than Vina in terms of gener
 
 It is evident that GlycoTorch Vina may be a more accurate or effective docking program for predicting the binding mode of glycosaminoglycans (GAGs) than Vina. However, it is important to note that the performance of different docking programs can vary depending on various factors. Therefore, it may be necessary to analyze the top few docking poses and use other methods, like molecular dynamics, to further validate the results and confirm the accuracy of the docking predictions.
 
-### Citations: 
 
 ## References
 
@@ -169,5 +168,5 @@ It is evident that GlycoTorch Vina may be a more accurate or effective docking p
 
 [7] Meli, R., Biggin, P.C. spyrmsd: symmetry-corrected RMSD calculations in Python. [J Cheminform 12, 49 (2020).](https://doi.org/10.1186/s13321-020-00455-2)
  
-### Acknowledgment
+## Acknowledgment
 This tutorial is based on the tutorial created by the authors of the DockingPie program.
